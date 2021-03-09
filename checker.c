@@ -17,11 +17,21 @@
 #define MINSOC 20
 
 
+/*Battery Parameter Check - generic function */
+/* Arguement : InPut Parameter , MinVal , MaxVal  */
+
+int checkBattParameter(float VALUEIN, int Const_Min , int Const_Max)
+{
+	int BattParamValue = ((Const_Min < VALUEIN) || (VALUEIN < Const_Max));
+	reutrn (BattParamValue);
+	
+}
+
 /* Check for temperature range */
 /* Arguement : Temperature  */
 int checktemperature(float TempIn)
 {
-	int TempValue = ((MINTEMP < TempIn) || (TempIn < MAXTEMP));
+	int TempValue = BattParamValue(TempIn,MINTEMP,MAXTEMP);
 	if (TempValue)
   {
     printf(" The current Battery temperature is %f. \n", TempIn);
