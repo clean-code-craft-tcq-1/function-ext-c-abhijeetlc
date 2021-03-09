@@ -79,8 +79,11 @@ int checkBattery(float TempIn, float soc, float chargeRate) {
   int socstatus,temperaturecheck,chargeratecheck;
   
      socstatus = Checksoc(soc);
+	 printf("SBatteryState %d \n", BatteryState);
      chargeratecheck = CheckChargeRate(chargeRate);
+	 printf("BatteryState %d \n", BatteryState);
      temperaturecheck = checktemperature(TempIn);
+	 printf("BatteryState %d \n", BatteryState);
      BatteryState = (socstatus & chargeratecheck & temperaturecheck);
      return (BatteryState);
  
