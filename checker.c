@@ -90,6 +90,12 @@ int checkBattery(float TempIn, float SOCIn, float chargeRate) {
 /*  Main function to call test cases  */
 
 int main() {
+	
   assert(!checkBattery(25, 70, 0.6));
   assert(!checkBattery(50, 85, 0));
+  assert(!checkBattery(0, 0, 0));
+  assert(!checkBattery(100, 100, 100));
+  assert(checkBattery(30, 40, 0.5));
+	
+	
 }
