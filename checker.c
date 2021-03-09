@@ -20,7 +20,7 @@
 /*Battery Parameter Check - generic function */
 /* Arguement : InPut Parameter , MinVal , MaxVal  */
 
-int checkBattParameter(float VALUEIN, float Const_Min , float Const_Max)
+bool checkBattParameter(float VALUEIN, float Const_Min , float Const_Max)
 {
 	int BattParamValue = ((Const_Min < VALUEIN) || (VALUEIN <= Const_Max));
 	return (BattParamValue);
@@ -31,7 +31,7 @@ int checkBattParameter(float VALUEIN, float Const_Min , float Const_Max)
 /* Arguement : Temperature  */
 int checktemperature(float TempIn)
 {
-	int TempValue = checkBattParameter(TempIn,MINTEMP,MAXTEMP);
+	bool TempValue = checkBattParameter(TempIn,MINTEMP,MAXTEMP);
 	if (TempValue)
   {
     printf(" The current Battery temperature is %f. \n", TempIn);
@@ -60,7 +60,7 @@ int CheckChargeRate(float chargeRate)
  /* Arguement : SOC  */
 int Checksoc(float SOCIn)
 {
-  int socValue= checkBattParameter(SOCIn,MINSOC,MAXSOC);
+  bool socValue= checkBattParameter(SOCIn,MINSOC,MAXSOC);
   if (socValue)
   {
      printf("State of Charge is %f percent.Out of range!\n",SOCIn);
@@ -91,7 +91,7 @@ int checkBattery(float TempIn, float SOCIn, float chargeRate) {
 
 int main() {
 	
-  assert(!checkBattery(25, 70, 0.6));
+  assert(checkBattery(25, 70, 0.6));
   assert(!checkBattery(50, 85, 0));
   assert(!checkBattery(0, 0, 0));
   assert(!checkBattery(100, 100, 100));
