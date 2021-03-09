@@ -63,7 +63,7 @@ int Checksoc(float SOCIn)
   int socValue= checkBattParameter(SOCIn,MINSOC,MAXSOC);
   if (socValue)
   {
-     printf("State of Charge is %f percent.Out of range!\n", SOCIn);
+     printf("State of Charge is %f percent.Out of range!\n",SOCIn);
 	 
      return 0;
   }
@@ -72,18 +72,15 @@ int Checksoc(float SOCIn)
 
 /* Battery overall check */
 /* Arguement : Temperature  , SOC , Chanrgerate */
-int checkBattery(float TempIn, float soc, float chargeRate) {
+int checkBattery(float TempIn, float SOCIn, float chargeRate) {
   
   int BatteryState = 0;
   
   int socstatus,temperaturecheck,chargeratecheck;
   
-     socstatus = Checksoc(soc);
-	 printf("SBatteryState %d \n", BatteryState);
+     socstatus = Checksoc(SOCIn); 
      chargeratecheck = CheckChargeRate(chargeRate);
-	 printf("BatteryState %d \n", BatteryState);
      temperaturecheck = checktemperature(TempIn);
-	 printf("BatteryState %d \n", BatteryState);
      BatteryState = (socstatus & chargeratecheck & temperaturecheck);
      return (BatteryState);
  
