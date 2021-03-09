@@ -11,10 +11,10 @@
 /* defines */
 
 #define MAXCHARGERATE 0.8
-#define MAXTEMP 45
+#define MAXTEMP 45.0
 #define MINTEMP 0
-#define MAXSOC 80
-#define MINSOC 20
+#define MAXSOC 80.0
+#define MINSOC 20.0
 
 
 /*Battery Parameter Check - generic function */
