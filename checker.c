@@ -31,7 +31,7 @@ int checkBattParameter(float VALUEIN, int Const_Min , int Const_Max)
 /* Arguement : Temperature  */
 int checktemperature(float TempIn)
 {
-	int TempValue = BattParamValue(TempIn,MINTEMP,MAXTEMP);
+	int TempValue = checkBattParameter(TempIn,MINTEMP,MAXTEMP);
 	if (TempValue)
   {
     printf(" The current Battery temperature is %f. \n", TempIn);
