@@ -60,7 +60,7 @@ int CheckChargeRate(float chargeRate)
  /* Arguement : SOC  */
 int Checksoc(float soc)
 {
-  int socValue= ((soc < MINSOC) || (soc > MAXSOC));
+  int socValue= checkBattParameter(soc,MINSOC,MAXSOC);
   if (socValue)
   {
      printf("State of Charge is %f percent.Out of range!\n", soc);
