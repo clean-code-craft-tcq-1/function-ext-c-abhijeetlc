@@ -23,7 +23,7 @@
 int checkBattParameter(float VALUEIN, int Const_Min , int Const_Max)
 {
 	int BattParamValue = ((Const_Min < VALUEIN) || (VALUEIN < Const_Max));
-	reutrn (BattParamValue);
+	return (BattParamValue);
 	
 }
 
