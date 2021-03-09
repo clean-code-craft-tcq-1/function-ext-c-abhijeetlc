@@ -20,7 +20,7 @@
 /*Battery Parameter Check - generic function */
 /* Arguement : InPut Parameter , MinVal , MaxVal  */
 
-int checkBattParameter(float VALUEIN, int Const_Min , int Const_Max)
+int checkBattParameter(float VALUEIN, float Const_Min , float Const_Max)
 {
 	int BattParamValue = ((Const_Min < VALUEIN) || (VALUEIN < Const_Max));
 	return (BattParamValue);
@@ -58,12 +58,12 @@ int CheckChargeRate(float chargeRate)
 
 /* Check for SOC status */
  /* Arguement : SOC  */
-int Checksoc(float soc)
+int Checksoc(float SOCIn)
 {
-  int socValue= checkBattParameter(soc,MINSOC,MAXSOC);
+  int socValue= checkBattParameter(SOCIn,MINSOC,MAXSOC);
   if (socValue)
   {
-     printf("State of Charge is %f percent.Out of range!\n", soc);
+     printf("State of Charge is %f percent.Out of range!\n", SOCIn);
 	 
      return 0;
   }
