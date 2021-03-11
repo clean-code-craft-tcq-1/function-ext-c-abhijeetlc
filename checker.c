@@ -70,8 +70,7 @@ int checktemperature(float TempIn)
 /* Arguement : ChargeRate  */
 int CheckChargeRate(float chargeRate)
 {
-	int chargerate_check=(chargeRate>MAXCHARGERATE);
-	 if(chargerate_check)
+	 if(chargeRate>MAXCHARGERATE)
 	   {
 		printf("Charge Rate is %f. Out of range!\n", chargeRate);
 		return 1;
