@@ -20,7 +20,7 @@
 /*Battery Parameter Low Check - generic function */
 /* Arguement : InPut Parameter , MinVal , MaxVal  */
 
-bool checkBattParameterLow(float VALUEIN,float Const_Min)
+int checkBattParameterLow(float VALUEIN,float Const_Min)
 {
   if(VALUEIN <= Const_Min )
     {
@@ -36,7 +36,7 @@ bool checkBattParameterLow(float VALUEIN,float Const_Min)
 /*Battery Parameter High Check - generic function */
 /* Arguement : InPut Parameter , MinVal , MaxVal  */
 
-bool checkBattParameterHigh(float VALUEIN,float Const_Max)
+int checkBattParameterHigh(float VALUEIN,float Const_Max)
 {
 	if( VALUEIN > Const_Max )
     {
@@ -54,15 +54,15 @@ bool checkBattParameterHigh(float VALUEIN,float Const_Max)
 /* Arguement : Temperature  */
 int checktemperature(float TempIn)
 {
-	bool TempValueLowCheck = checkBattParameterLow(TempIn,MINTEMP);
-	bool TempValueHighCheck = checkBattParameterHigh(TempIn,MAXTEMP);
-	if (!( TempValueLowCheck || TempValueHighCheck))
+	int TempValueLowCheck = checkBattParameterLow(TempIn,MINTEMP);
+	int TempValueHighCheck = checkBattParameterHigh(TempIn,MAXTEMP);
+	if (!( TempValueLowCheck + TempValueHighCheck))
   {
     printf(" The current Battery temperature is %f. OK \n", TempIn);
-    return 1;
+    return 0;
   } 
   printf("Battery Temperature is %f. Out of range!\n", TempIn);
-  return 0;
+  return 1;
 
 }
 
@@ -74,26 +74,26 @@ int CheckChargeRate(float chargeRate)
 	 if(chargerate_check)
 	   {
 		printf("Charge Rate is %f. Out of range!\n", chargeRate);
-		return 0;
+		return 1;
 	   }
 	printf("Charge Rate is %f . OK \n", chargeRate);  
-	return 1;
+	return 0;
 }
 
 /* Check for SOC status */
  /* Arguement : SOC  */
 int Checksoc(float SOCIn)
 {
-  bool socValueLowCheck= checkBattParameterLow(SOCIn,MAXSOC);
-  bool socValueHighCheck= checkBattParameterHigh(SOCIn,MAXSOC);
-  if (!(socValueLowCheck || socValueHighCheck))
+  int socValueLowCheck= checkBattParameterLow(SOCIn,MAXSOC);
+  int socValueHighCheck= checkBattParameterHigh(SOCIn,MAXSOC);
+  if (!(socValueLowCheck + socValueHighCheck))
   {
      printf("State of Charge is %f percent.OK!\n",SOCIn);
 	 
-     return 1;
+     return 0;
   }
   printf("SOC value is %f. Out of range!\n", SOCIn);
-  return 0;
+  return 1;
 }
 
 /* Battery overall check */
