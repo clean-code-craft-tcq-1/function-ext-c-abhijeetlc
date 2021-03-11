@@ -73,7 +73,7 @@ int Checksoc(float SOCIn)
   bool socValueHighCheck= checkBattParameterHigh(SOCIn,MAXSOC);
   if (!(socValueLowCheck && socValueHighCheck))
   {
-     printf("State of Charge is %f percent.Out of range!\n",SOCIn);
+     printf("State of Charge is %f percent.OK!\n",SOCIn);
 	 
      return 1;
   }
