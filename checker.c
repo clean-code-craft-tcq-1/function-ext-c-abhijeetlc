@@ -22,7 +22,14 @@
 
 bool checkBattParameterLow(float VALUEIN,float Const_Min)
 {
-	return ((VALUEIN <= Const_Min ));
+  if(VALUEIN <= Const_Min )
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 	
 }
 
@@ -31,7 +38,15 @@ bool checkBattParameterLow(float VALUEIN,float Const_Min)
 
 bool checkBattParameterHigh(float VALUEIN,float Const_Max)
 {
-	return ((Const_Max < VALUEIN));
+	if( VALUEIN > Const_Max )
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+	
 	
 }
 
@@ -92,7 +107,7 @@ int checkBattery(float TempIn, float SOCIn, float chargeRate) {
      socstatus = Checksoc(SOCIn); 
      chargeratecheck = CheckChargeRate(chargeRate);
      temperaturecheck = checktemperature(TempIn);
-     BatteryState = (socstatus & chargeratecheck & temperaturecheck);
+     BatteryState = !(socstatus + chargeratecheck + temperaturecheck);
      return (BatteryState);
  
 }
@@ -102,7 +117,7 @@ int checkBattery(float TempIn, float SOCIn, float chargeRate) {
 
 int main() {
 	
-  assert(!checkBattery(25, 70, 0.6));
+  assert(checkBattery(25, 70, 0.6));
   assert(!checkBattery(50, 85, 0));
   assert(!checkBattery(0, 0, 0));
   assert(!checkBattery(100, 100, 100));
