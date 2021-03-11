@@ -41,7 +41,7 @@ int checktemperature(float TempIn)
 {
 	bool TempValueLowCheck = checkBattParameterLow(TempIn,MINTEMP);
 	bool TempValueHighCheck = checkBattParameterHigh(TempIn,MAXTEMP);
-	if (!( TempValueLowCheck && TempValueHighCheck))
+	if (!( TempValueLowCheck || TempValueHighCheck))
   {
     printf(" The current Battery temperature is %f. OK \n", TempIn);
     return 1;
@@ -71,7 +71,7 @@ int Checksoc(float SOCIn)
 {
   bool socValueLowCheck= checkBattParameterLow(SOCIn,MAXSOC);
   bool socValueHighCheck= checkBattParameterHigh(SOCIn,MAXSOC);
-  if (!(socValueLowCheck && socValueHighCheck))
+  if (!(socValueLowCheck || socValueHighCheck))
   {
      printf("State of Charge is %f percent.OK!\n",SOCIn);
 	 
@@ -103,8 +103,8 @@ int checkBattery(float TempIn, float SOCIn, float chargeRate) {
 int main() {
 	
   assert(checkBattery(25, 70, 0.6));
-  assert(checkBattery(50, 85, 0));
-  assert(checkBattery(0, 0, 0));
+  assert(!checkBattery(50, 85, 0));
+  assert(!checkBattery(0, 0, 0));
   assert(!checkBattery(100, 100, 100));
   assert(checkBattery(30, 40, 0.5));
 	
